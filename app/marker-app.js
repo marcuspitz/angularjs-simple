@@ -15,4 +15,17 @@ angular.module('Marker', [
         {"id": 1, "title": "Angular", "url": "www.google.com.br", "category": "Development"},
         {"id": 2, "title": "SQL Server", "url": "www.google.com.br", "category": "Development"}
     ];
+
+
+    $scope.currentCategory = null;
+    $scope.setCurrentCategory = (category) => {
+        console.log('testesd00');
+        this.currentCategory = category;
+    };
+    
+    $scope.isCurrentCategory = (category) => {
+        return this.currentCategory != null && this.currentCategory.name === category.name;
+    };
+
+
 });
