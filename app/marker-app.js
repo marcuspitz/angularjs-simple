@@ -40,6 +40,7 @@ angular.module('Marker', [
     $scope.startCreating = () => {
         $scope.isCreating = true;
         $scope.isEditing = false;
+        resetCreateForm();
     };
 
     $scope.cancelCreating = () => {
@@ -62,5 +63,22 @@ angular.module('Marker', [
     $scope.shouldShowEditing = () => {
         return $scope.isEditing && !$scope.isCreating;
     }
+    /**
+     * CRUD
+     */
+    function resetCreateForm() {
+        $scope.newBookmark = {
+            title:'',
+            url:'',
+            category: $scope.currentCategory.name
+        }
+    }
+
+    $scope.createBookmark = (bookmark) => {
+        console.log(bookmark);
+        bookmark.id = $scope.bookmarks.length;
+        $scope.bookmarks.push(bookmark);
+        resetCreateForm();
+    };
 
 });
