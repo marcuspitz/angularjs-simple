@@ -105,4 +105,11 @@ angular.module('Marker', [
         return $scope.editedBookmark !== null && $scope.editedBookmark.id === bookmarkId;
     }
 
+    $scope.deleteBookmark = (bookmark) => {
+        console.log(bookmark);
+        $scope.bookmarks = $scope.bookmarks.filter( (el) => {
+           return el.id !== bookmark.id;
+        });
+    }
+
 });
