@@ -21,6 +21,7 @@ angular.module('Marker', [
 
 
     $scope.currentCategory = null;
+    $scope.editedBookmark = null;
     $scope.setCurrentCategory = (category) => {
         $scope.currentCategory = category;
         $scope.cancelCreating();
@@ -80,5 +81,28 @@ angular.module('Marker', [
         $scope.bookmarks.push(bookmark);
         resetCreateForm();
     };
+
+    $scope.updateBookmark = (bookmark) => {
+        $scope.bookmarks.map( (el) => {
+            if (el.id === bookmark.id) {
+                el.title = bookmark.title;
+                el.url = bookmark.url;
+                return el;
+            }
+        } );
+        //$scope.editedBookmark.title = bookmark.title;
+        //$scope.editedBookmark.url = bookmark.url;
+
+        $scope.editedBookmark = null;
+        $scope.isEditing = false;
+    };
+
+    $scope.setEditedBookmark = (bookmark) => {
+        $scope.editedBookmark = angular.copy(bookmark);
+    };
+
+    $scope.isSelectedBookmark = (bookmarkId) => {
+        return $scope.editedBookmark !== null && $scope.editedBookmark.id === bookmarkId;
+    }
 
 });
