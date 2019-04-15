@@ -1,5 +1,7 @@
 angular.module('Marker', [
     //submodules / dependencies
+    'categories',
+    'categories.bookmarks'
 ])
 .controller('AppCntrl', ($scope) => {
 
